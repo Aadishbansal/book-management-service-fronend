@@ -44,7 +44,6 @@ const BookForm = (props) => {
   } = useInput(isNotEmpty);
   useEffect(() => {
     const book = props.book;
-    console.log(handleAuthorPopulate);
     if (book) {
       handleTitlePopulate(book.title);
       handleAuthorPopulate(book.author);
