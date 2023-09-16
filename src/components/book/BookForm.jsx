@@ -51,7 +51,14 @@ const BookForm = (props) => {
       handleGenrePopulate(book.genre);
       handlePublicationDatePopulate(book.publicationDate);
     }
-  }, [edit]);
+  }, [
+    edit,
+    handleTitlePopulate,
+    handleAuthorPopulate,
+    handleGenrePopulate,
+    handlePublicationDatePopulate,
+    props,
+  ]);
 
   const formSubmissionHandler = (event) => {
     event.preventDefault();
