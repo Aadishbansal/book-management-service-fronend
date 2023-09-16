@@ -1,8 +1,5 @@
-import { useContext, useState } from "react";
 import Alert from "../UI/Alerts";
 import BookItem from "./BookItem";
-import BookContext from "../../store/store";
-
 const BookList = (props) => {
   const { books } = props;
 

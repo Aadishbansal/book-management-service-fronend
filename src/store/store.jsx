@@ -3,18 +3,15 @@ import { useNavigate } from "react-router";
 
 const BookContext = createContext({
   books: [],
-  filteredBooks: [],
   addBook: (book) => {},
   getBookById: (bookId) => {},
   filterBook: (val) => {},
   populateBook: () => {},
   updateBook: (mode, bookId, book) => {},
 });
-// const process.env.BACKEND_URL = "http://localhost:8080/api/books";
 
 export const BookContextProvider = (props) => {
   const [books, setBooks] = useState([]);
-  const [filteredBooks, setFilteredBooks] = useState([]);
   const navigate = useNavigate();
   const getBookById = (bookId) => {
     return books.find((book) => book._id === bookId);
@@ -33,8 +30,6 @@ export const BookContextProvider = (props) => {
       }
     });
     return newBooks;
-    // console.log(newBooks);
-    // setFilteredBooks(newBooks);
   };
 
   const handleAddBook = (book) => {
@@ -88,7 +83,6 @@ export const BookContextProvider = (props) => {
     books,
     addBook: handleAddBook,
     getBookById,
-    filteredBooks,
     filterBook,
     populateBook: handlePopulateBook,
     updateBook: handleUpdateBook,

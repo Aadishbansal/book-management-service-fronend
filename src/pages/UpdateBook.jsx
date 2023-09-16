@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import Alert from "../components/UI/Alerts";
 import BookForm from "../components/book/BookForm";
@@ -6,7 +6,7 @@ import BookContext from "../store/store";
 
 const UpdateBook = () => {
   const ctx = useContext(BookContext);
-  const [searchParam, setSearchParam] = useSearchParams();
+  const [searchParam] = useSearchParams();
   const mode = searchParam.get("method");
   const { bookId } = useParams();
   const book = ctx.getBookById(bookId);

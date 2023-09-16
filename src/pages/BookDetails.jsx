@@ -7,17 +7,9 @@ const BookDetails = () => {
   const { bookId } = useParams();
   const ctx = useContext(BookContext);
   const [book, setBook] = useState();
-  // const book = {
-  //   _id: 3,
-  //   title: "titl3",
-  //   author: "author3",
-  //   genre: "fiction",
-  //   userId: 1,
-  //   publicationDate: "1333 - 13 - 13",
-  // };
   useEffect(() => {
     setBook(ctx.getBookById(bookId));
-  }, [bookId, book]);
+  }, [bookId, book, ctx]);
   return (
     book && (
       <div className="container">
