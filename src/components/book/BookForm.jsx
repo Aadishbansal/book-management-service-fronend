@@ -4,7 +4,6 @@ import useInput from "../hooks/use-input";
 const isNotEmpty = (value) => value.trim() !== "";
 
 const BookForm = (props) => {
-  const { edit } = props;
   const {
     value: enteredTitle,
     isValid: titleIsValid,
@@ -44,21 +43,15 @@ const BookForm = (props) => {
     reset: resetPublicationDateInput,
   } = useInput(isNotEmpty);
   useEffect(() => {
-    const { book } = props;
+    const book = props.book;
+    console.log(handleAuthorPopulate);
     if (book) {
       handleTitlePopulate(book.title);
       handleAuthorPopulate(book.author);
       handleGenrePopulate(book.genre);
       handlePublicationDatePopulate(book.publicationDate);
     }
-  }, [
-    edit,
-    handleTitlePopulate,
-    handleAuthorPopulate,
-    handleGenrePopulate,
-    handlePublicationDatePopulate,
-    props,
-  ]);
+  }, [props.book]);
 
   const formSubmissionHandler = (event) => {
     event.preventDefault();
@@ -76,6 +69,8 @@ const BookForm = (props) => {
       author: enteredAuthor,
       publicationDate: enteredPublicationDate,
     };
+    const { edit } = props;
+
     if (edit) {
       props.onUpdateBook(bookData);
     } else {
