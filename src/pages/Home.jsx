@@ -15,12 +15,12 @@ const Home = () => {
       .then((res) => res.json())
       .then((res) => {
         setBooks(res.data);
-        ctx.populateBook(books);
+        ctx.populateBook(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [ctx]);
   return (
     <div className="container ">
       <Search onFilter={handleFilter} />
